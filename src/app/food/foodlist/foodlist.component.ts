@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { throwError, catchError } from 'rxjs';
+import { Router } from '@angular/router';
 
 interface Food{
   id:Number,
@@ -60,9 +61,13 @@ export class FoodlistComponent implements OnInit {
     {
       return this.http.get<Food[]>('http://localhost:9092/getFoodItem').subscribe((response) => {this.foods = response});
     }
+
+    rowSelected(food:any){
+      this.router.navigate([ "/editFood", JSON.stringify(food)]);
+    }
  
   constructor(
-    private http: HttpClient) {
+    private http: HttpClient, private router: Router) {
       
      }
 

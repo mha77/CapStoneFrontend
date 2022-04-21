@@ -4,11 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FoodRoutingModule } from './food-routing.module';
 import { FoodlistComponent } from './foodlist/foodlist.component';
+import { EditFoodComponent } from './edit-food/edit-food.component';
 
 
 @NgModule({
   declarations: [
-    FoodlistComponent
+    FoodlistComponent,
+    EditFoodComponent
   ],
   imports: [
     CommonModule,

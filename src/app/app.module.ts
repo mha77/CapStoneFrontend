@@ -9,8 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminPortalModule } from './admin-portal/admin-portal.module';
 import { FoodModule } from './food/food.module';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
