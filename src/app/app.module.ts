@@ -8,6 +8,7 @@ import { UserPortalModule } from './user-portal/user-portal.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminPortalModule } from './admin-portal/admin-portal.module';
 import { FoodModule } from './food/food.module';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,8 @@ import { FoodModule } from './food/food.module';
     HttpClientModule,
     ReactiveFormsModule,
     AdminPortalModule,
-    FoodModule
-    
+    FoodModule,
+    CartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
