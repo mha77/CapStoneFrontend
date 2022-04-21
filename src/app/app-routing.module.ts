@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserWelcomeComponent } from './user-portal/user-welcome/user-welcome.component';
 import { UserLoginComponent } from './user-portal/user-login/user-login.component';
 import { UserRegisterComponent } from './user-portal/user-register/user-register.component';
-import { AdminLoginComponent } from './admin-portal/admin-login/admin-login.component';
 import { AdminWelcomeComponent } from './admin-portal/admin-welcome/admin-welcome.component';
 
 const routes: Routes = [

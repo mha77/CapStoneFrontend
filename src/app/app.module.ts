@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { UserPortalModule } from './user-portal/user-portal.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminPortalModule } from './admin-portal/admin-portal.module';
+import { FoodModule } from './food/food.module';
 
 
 
@@ -21,7 +22,8 @@ import { AdminPortalModule } from './admin-portal/admin-portal.module';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AdminPortalModule
+    AdminPortalModule,
+    FoodModule
     
   ],
   providers: [],

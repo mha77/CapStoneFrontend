@@ -2,22 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { throwError, catchError } from 'rxjs';
 
-interface User {
-  lname:String;
-  fname:String;
-  email:String;
-  password:String;
-  admin:boolean;
+interface Food{
+  id:Number,
+  foodName:String,
+  cuisine:String,
+  description:String,
+  price:Number,
+  enabled:Boolean
 }
 
 @Component({
-  selector: 'app-user-register',
-  templateUrl: './user-register.component.html',
-  styleUrls: ['./user-register.component.css']
+  selector: 'app-foodlist',
+  templateUrl: './foodlist.component.html',
+  styleUrls: ['./foodlist.component.css']
 })
-export class UserRegisterComponent implements OnInit {
+export class FoodlistComponent implements OnInit {
 
-  private registerUrl = 'http://localhost:9092/userRegister';
+  private registerUrl = 'http://localhost:9092/addFoodItem';
   
   headers = new HttpHeaders({
     "Content-Type": "application/json",
@@ -27,18 +28,19 @@ export class UserRegisterComponent implements OnInit {
   loading = true;
   errorMessage = "";
 
-  register(value:any){
+  addFoodItem(value:any){
    
-    const user = <User>{
-      email:value.email,
-      fname:value.fname,
-      lname:value.lname,
-      password:value.password,
-      admin:value.admin
+    const user = <Food>{
+      foodName:value.foodName,
+      cuisine:value.cuisine,
+      description:value.description,
+      price:value.price,
+      enabled:value.enabled
     }
 
     return this.http.post(this.registerUrl,user, {
-      headers: this.headers}).pipe(catchError(error => this.handleError(error)))
+      headers: this.headers})
+      .pipe(catchError(error => this.handleError(error)))
       .subscribe(response => console.log("Successfull: ", response))
     }
 
@@ -49,6 +51,14 @@ export class UserRegisterComponent implements OnInit {
         console.error('Backend returned code ${error.status), ' + 'body was: ${error.error}');
       }
       return throwError(() => new Error("Something bad happened; please try again later"));
+    }
+
+
+    foods : Food[] = []
+
+    getFood()
+    {
+      return this.http.get<Food[]>('http://localhost:9092/getFoodItem').subscribe((response) => {this.foods = response});
     }
  
   constructor(
