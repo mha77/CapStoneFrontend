@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+
 interface Food{
   id:Number,
   foodName:String,
@@ -21,6 +22,7 @@ export class ChooseCartComponent implements OnInit {
   searchText!: String
 
   foods : Food[] = []
+  foodsArray : Array<Food> = []
 
   cartItems : Array<Food> = []
 
@@ -30,8 +32,12 @@ export class ChooseCartComponent implements OnInit {
 
   getEnabledFood()
     {
-      return this.http.get<Food[]>('http://localhost:9092/getEnabledFoodList').subscribe((response) => {this.foods = response});
+      return this.http.get<Food[]>('http://localhost:9092/getEnabledFoodList').subscribe((response) => {this.foods = response; this.sortArray()});
     }
+  
+  sortArray(){
+    this.foods.sort((a:Food, b:Food) => a.cuisine.toLowerCase() > b.cuisine.toLowerCase() ? 1 : -1);
+  }
   
     showCart(){
       this.router.navigate([ "/ShowCart", JSON.stringify(this.cartItems)]);

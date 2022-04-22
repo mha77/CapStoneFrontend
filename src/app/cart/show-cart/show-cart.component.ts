@@ -23,12 +23,23 @@ export class ShowCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => this.cartItems = JSON.parse(params['cart']));
-    console.log("cartItems: " + JSON.stringify(this.cartItems))
+    this.cartItems.sort((a:Food, b:Food) => a.cuisine.toLowerCase() > b.cuisine.toLowerCase() ? 1 : -1);
+    this.totalSum()
   }
 
   delete(food:any){
     this.cartItems.splice(this.cartItems.findIndex(item => item.id === food.id),1);
-    console.log("item id "+ food.id) + " deleted"
+    this.totalSum()
+  }
+
+  total: any = 0
+
+  totalSum(){
+    let totalTemp:any = 0
+    
+    this.cartItems.forEach(item => totalTemp += item.price)
+    this.total = totalTemp
+
   }
 
 }

@@ -5,23 +5,28 @@
     <table class="table table-striped">
       <thead>
           <tr>
-            <th>Id</th>
+            <th style="display: none;">Id</th>
             <th>FoodName</th>
             <th>Cuisine</th>
             <th>Description</th>
             <th>Price</th>
-            <th>Enabled</th>
+            <th style="display: none;">Enabled</th>
           </tr>
       </thead>
       <tbody>
         <tr *ngFor="let food of cartItems" (click)="delete(food)">
-          <td>{{ food.id }}</td>
+          <td style="display: none;">{{ food.id }}</td>
           <td>{{ food.foodName }}</td>
           <td>{{ food.cuisine }}</td>
           <td>{{ food.description}}</td>
           <td>{{ food.price }}</td>
-          <td>{{ food.enabled}}</td>
+          <td style="display: none;">{{ food.enabled}}</td>
         </tr>
       </tbody>
     </table>
-  </div>
+</div>
+
+<form  novalidate  #form="ngForm">
+    <label>Total Sum of Cart </label>
+    <input [value]="total">
+</form>

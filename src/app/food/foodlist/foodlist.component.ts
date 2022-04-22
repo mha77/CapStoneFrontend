@@ -40,7 +40,7 @@ export class FoodlistComponent implements OnInit {
     }
 
     return this.http.post(this.registerUrl,user, {
-      headers: this.headers})
+      headers: this.headers, responseType: 'text'})
       .pipe(catchError(error => this.handleError(error)))
       .subscribe(response => console.log("Successfull: ", response))
     }
