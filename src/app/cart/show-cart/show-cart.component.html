@@ -1,0 +1,27 @@
+<div class="container">
+   
+    <h2>Choosen Food in the Cart</h2>
+     
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>Id</th>
+            <th>FoodName</th>
+            <th>Cuisine</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Enabled</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let food of cartItems" (click)="delete(food)">
+          <td>{{ food.id }}</td>
+          <td>{{ food.foodName }}</td>
+          <td>{{ food.cuisine }}</td>
+          <td>{{ food.description}}</td>
+          <td>{{ food.price }}</td>
+          <td>{{ food.enabled}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

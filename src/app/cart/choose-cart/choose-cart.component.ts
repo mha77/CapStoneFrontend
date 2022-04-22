@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 interface Food{
   id:Number,
@@ -18,19 +19,25 @@ interface Food{
 export class ChooseCartComponent implements OnInit {
 
   searchText!: String
-  
+
   foods : Food[] = []
 
+  cartItems : Array<Food> = []
+
   rowSelected(food:any){
-    
+    this.cartItems.push(food)
   }
 
   getEnabledFood()
     {
       return this.http.get<Food[]>('http://localhost:9092/getEnabledFoodList').subscribe((response) => {this.foods = response});
     }
+  
+    showCart(){
+      this.router.navigate([ "/ShowCart", JSON.stringify(this.cartItems)]);
+    }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
   }
