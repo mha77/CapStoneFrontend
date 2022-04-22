@@ -1,5 +1,3 @@
-<p>choose-cart works!</p>
-
 <form  novalidate (ngSubmit)="getEnabledFood()" #form="ngForm">
     <button type="submit" class="btn btn-default">Load List</button>
 </form>
@@ -7,6 +5,10 @@
 <div class="container">
    
     <h2>Display List of FoodItems</h2>
+
+<div class="form-group">
+    <input type="text" class="form-control search-field" placeholder="Search Here" [(ngModel)]="searchText">
+</div>
      
     <table class="table table-striped" data-show-toggle="false" data-expand-first="true">
       <thead>
@@ -20,7 +22,7 @@
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let food of foods" (click)="rowSelected(food);">
+        <tr *ngFor="let food of foods | searchFilter: searchText" (click)="rowSelected(food);">
           <td style="display: none;">{{ food.id }}</td>
           <td>{{ food.foodName }}</td>
           <td>{{ food.cuisine }}</td>

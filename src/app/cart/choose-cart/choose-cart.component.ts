@@ -17,6 +17,8 @@ interface Food{
 })
 export class ChooseCartComponent implements OnInit {
 
+  searchText!: String
+  
   foods : Food[] = []
 
   rowSelected(food:any){
