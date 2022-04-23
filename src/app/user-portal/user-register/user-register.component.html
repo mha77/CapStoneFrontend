@@ -17,13 +17,13 @@
     </div>
     <div class="form-group">
         <label>Confirm Password*</label>
-        <input type="password" class="form-control" name="repPassword" ngModel required>
+        <input type="password" class="form-control" name="confPassword" ngModel required>
     </div>
     <div class="checkbox">
         <label>Admin</label>
-            <input type="checkbox" name="admin" ngModel>  
+            <input type="checkbox" name="admin" ngModel id="adminCheck">  
     </div>
-    <button type="submit" class="btn btn-default"
+    <button type="submit" class="btn btn-default" id="submitButton"
             [disabled]="!form.valid">Register</button>
     </form>
     
