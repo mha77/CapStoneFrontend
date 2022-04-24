@@ -7,13 +7,15 @@ import { CartRoutingModule } from './cart-routing.module';
 import { ChooseCartComponent } from './choose-cart/choose-cart.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ShowCartComponent } from './show-cart/show-cart.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
   declarations: [
     ChooseCartComponent,
     SearchFilterPipe,
-    ShowCartComponent
+    ShowCartComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
