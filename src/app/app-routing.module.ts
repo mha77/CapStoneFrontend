@@ -4,6 +4,7 @@ import { UserWelcomeComponent } from './user-portal/user-welcome/user-welcome.co
 import { UserLoginComponent } from './user-portal/user-login/user-login.component';
 import { UserRegisterComponent } from './user-portal/user-register/user-register.component';
 import { AdminWelcomeComponent } from './admin-portal/admin-welcome/admin-welcome.component';
+import { AdminLoginComponent } from './admin-portal/admin-login/admin-login.component';
 
 const routes: Routes = [
   {path: 'userPortal', component:UserWelcomeComponent,
@@ -12,7 +13,9 @@ const routes: Routes = [
     {path:'userRegister', component:UserRegisterComponent}
   ]
   },
-  {path:'adminPortal', component:AdminWelcomeComponent}
+  {path:'adminPortal', component:AdminWelcomeComponent,
+  children:[
+    {path:"AdminLogin", component:AdminLoginComponent}]}
 ];
 
 @NgModule({

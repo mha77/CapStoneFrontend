@@ -11,9 +11,10 @@ import { FoodModule } from './food/food.module';
 import { CartModule } from './cart/cart.module';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
