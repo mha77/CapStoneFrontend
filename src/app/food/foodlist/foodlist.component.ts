@@ -12,6 +12,11 @@ interface Food{
   enabled:Boolean
 }
 
+interface Cuisine{
+  id:Number,
+  cName:String,
+}
+
 @Component({
   selector: 'app-foodlist',
   templateUrl: './foodlist.component.html',
@@ -38,6 +43,7 @@ export class FoodlistComponent implements OnInit {
       price:value.price,
       enabled:value.enabled
     }
+    console.log("Sent item: " + JSON.stringify(user))
 
     return this.http.post(this.registerUrl,user, {
       headers: this.headers, responseType: 'text'})
@@ -65,6 +71,12 @@ export class FoodlistComponent implements OnInit {
     rowSelected(food:any){
       this.router.navigate([ "/editFood", JSON.stringify(food)]);
     }
+
+    cuisines : Cuisine[] = []
+    
+    getCuisines(){
+      return this.http.get<Cuisine[]>('http://localhost:9092/getCuisineList').subscribe((response) => {this.cuisines = response;console.log("cuisines: "+JSON.stringify(this.cuisines))});
+    }
  
   constructor(
     private http: HttpClient, private router: Router) {
@@ -72,6 +84,8 @@ export class FoodlistComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.getCuisines();
+    console.log("cuisines: "+JSON.stringify(this.cuisines))
   }
 
 }

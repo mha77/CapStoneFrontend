@@ -3,6 +3,7 @@
 </div>
 
 <h1>Add Food Item</h1>
+
 <form  novalidate (ngSubmit)="addFoodItem(form.value)" #form="ngForm">
     <div class="form-group">
         <label>Name*</label>
@@ -13,8 +14,10 @@
         <input type="text" class="form-control" name="description" ngModel required>
     </div>
     <div class="form-group">
-        <label>Cuisine*</label>
-        <input type="text" class="form-control" name="cuisine" ngModel required>
+      <label>Cuisine List </label> 
+      <select name="cuisine" class="form-control" ngModel="cuisine">
+        <option *ngFor="let cuisine of cuisines" >{{cuisine.cName}}</option>
+      </select>
     </div>
     <div class="form-group">
         <label>Price*</label>
